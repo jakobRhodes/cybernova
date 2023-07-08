@@ -1,0 +1,291 @@
+:root {
+  --ui-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+  fill: rgba(0, 0, 0, 0.54);
+  --ui-shadow-border: 1px solid rgba(0, 0, 0, 0.14);
+  --color1: #2C3531;
+  --color2: #116466;
+  --color3: #D9B08C;
+  --color4: #FFCB9A;
+  --color5: #D1E8E2;
+  --color6: #fefe22;
+  --color7: #374955;
+  --color8: #7DF9FF;
+  --color9: #EEC9BC;
+}
+
+@font-face {
+  font-family: Goblin; 
+  src: url('GlitchGoblin-2O87v.ttf');
+}
+@font-face {
+  font-family: Cyber; 
+  src: url('CyberwayRiders-lg97d.ttf');
+}
+@font-face {
+  font-family: SpaceArmor; 
+  src: url('SpaceArmor-vmlv4.otf');    
+}
+@font-face {
+  font-family: Bebas; 
+  src: url('BebasNeue-Regular.ttf');    
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+}
+
+hr {
+  background-color: #D1E8E2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.View {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 20px;
+  width: 100%;
+  padding: 20px;
+  background-size: cover;
+}
+
+.Banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-height: 5%;
+  min-height: 5%;
+  border-style: solid;
+  border-radius: 30px;
+  border-color: var(--color5);
+  background-color: var(--color2);
+  padding: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(banner_image.png);
+}
+
+.Body {
+  display: flex;
+  flex-wrap: wrap;
+  background: #374955;
+  padding: 2em;
+  margin-top: 1em;
+  width: 100%;
+  height: max-content;
+}
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  max-height: 10vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.5em;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: var(--color1);
+}
+
+.NavBarButton {
+  display: flex;
+  justify-content: center;
+  width: 5em;
+  align-items: center;
+  padding: 0.3em 1.2em;
+  margin-bottom: 1em;
+  background: var(--color7);
+  border-style: solid;
+  border-radius:2em;
+  border-color: var(--color5);
+  font-size: 2vw;
+  color: var(--color6);
+  text-transform: capitalize;
+  font-family: Cyber;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+.NavBarButton:hover{
+  color:#EEC9BC;
+  background-color: var(--color8);
+}
+
+.LoginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:0.3em 1.4em;
+  margin-right: 1em;
+  margin:0 0.1em 0.em 0;
+  background: var(--color7);
+  border-style: solid;
+  border-radius: 30px;
+  border-color: var(--c);
+  font-size: 1.3vw;
+  font-weight: bold;
+  color: var(--color5);
+  text-transform: capitalize;
+}
+
+.LoginButton:hover{
+  color:#EEC9BC;
+  background-color: var(--color8);
+}
+
+.WelcomeView {
+    background-color: var(--color1);
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    padding-bottom: 0;
+}
+
+.UserView {
+    background: url("https://cdn.auth0.com/blog/whatabyte-portal/patio.jpeg") left bottom;
+    background-size: cover;
+}
+
+.Login{
+  margin-left:auto; 
+  margin-right: 0;
+}
+
+.Logo {
+  flex-grow: 4;
+  font-family: Cyber;
+  font-size: 7vw;
+  color: #fefe22;
+  letter-spacing: 20px;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+  filter: drop-shadow(30px 10px 4px var(--color1));
+}
+
+.Footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: bottom;
+  column-gap: 10em;
+  height: 6em;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color1);
+  color: var(--color5);
+  text-align: center;
+  border-top: 5px solid var(--color5);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1vw;
+}
+
+.FooterItem {
+ font-size: 16px;
+ padding: 1.5em
+
+}
+.FooterBanner {
+  display: flex;
+  flex-basis: 100%;
+  width: 100%;
+  height: 90%;
+  background-color: #1e2421;
+  margin-bottom: 0;
+  padding: 1em;
+}
+
+.FooterBannerItem {
+  padding: 1.5em 4vw;
+  font-size: 16px;
+  color: #808080;
+}
+
+.FooterBannerCopyright {
+  margin-left: auto;
+  padding: 1.5em;
+  font-size: 16px;
+  color: #808080;
+  margin-bottom: 2em;
+}
+
+.Title {
+  font-size: 32px;
+  font-family: bebas;
+  background-color: var(--color1);
+  width: 100%;
+  padding: 0.5em;
+  color: white;
+  border: 5px solid var(--color6);
+  border-bottom: 0;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.Post {
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em;
+}
+
+.Comments {
+  height: 30vh;
+  width: 40%;
+  align-self: center;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em;
+}
