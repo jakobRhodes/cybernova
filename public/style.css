@@ -278,11 +278,24 @@ a {
   padding: 1em;
 }
 
-.Comments {
+.CommentForm {
   height: 30vh;
   width: 40%;
   align-self: center;
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
+}
+
+.CommentSection {
+  height: 30vh;
+  width: 40%;
+  align-self: center;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em;
+}
+
+.Comment {
+  
 }

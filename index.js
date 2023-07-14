@@ -8,6 +8,7 @@ const path = require("path");
 const expressSession = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
+const { body, validationResult } = require("express-validator");
 
 require("dotenv").config();
 
@@ -108,6 +109,15 @@ app.get("/user", secured, (req, res, next) => {
     userProfile: userProfile
   });
 });
+
+app.get("/comment", (req, res) => {
+  res.render("index")
+})
+
+app.post("/comment", (req, res) => {
+  const { name, email, password, password_confirm } = req.body
+  res.render("index")
+})
 
 /**
  * Server Activation
