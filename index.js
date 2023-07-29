@@ -8,16 +8,18 @@ const path = require("path");
 const expressSession = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-const { body, validationResult } = require("express-validator");
-
+const {body, validationResult } = require("express-validator");
+const bodyParser = require('body-parser');
 require("dotenv").config();
-
 const authRouter = require("./auth");
+
 /**
  * App Variables
  */
 const app = express();
 const port = process.env.PORT || "3000";
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 /**
  * Session Configuration (New!)
@@ -69,6 +71,8 @@ app.use(expressSession(session));
 passport.use(strategy);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json())
+
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -99,7 +103,26 @@ const secured = (req, res, next) => {
 
 
 app.get('/', function (req, res) {
-  res.render('index', {});
+  const oracledb = require('oracledb');
+  const connString = '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
+  //Changes the return format to an array of JavaScript Objects
+  oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
+
+  async function run() {
+
+      const connection = await oracledb.getConnection ({
+          user          : "MERCANIST",
+          password      : 'CyberPunkLucy51!',
+          connectString : connString
+      });
+
+      const result = await connection.execute(`SELECT * FROM COMMENTS`);
+      var data = result.rows;
+      //console.log(data);
+      await connection.close();
+      res.render('index', {data: data});
+    }
+  run();
 });
 
 app.get("/user", secured, (req, res, next) => {
@@ -111,13 +134,18 @@ app.get("/user", secured, (req, res, next) => {
 });
 
 app.get("/comment", (req, res) => {
-  res.render("index")
-})
+  res.sendFile(__dirname + "/index.html");
+});
 
-app.post("/comment", (req, res) => {
-  const { name, email, password, password_confirm } = req.body
-  res.render("index")
-})
+app.post("/comment", [
+  body('name').isLength({ min: 3 }).trim().escape(),
+  body('email').isEmail().normalizeEmail(),
+  body('text').trim().escape()], 
+(req, res) => {
+  var newComment = true;
+  res.render('index', {name: req.body.name, email: req.body.email, text: req.body.text, newComment: newComment});
+  var mysql = require('mysql');
+});
 
 /**
  * Server Activation

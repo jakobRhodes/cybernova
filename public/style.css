@@ -278,13 +278,27 @@ a {
   padding: 1em;
 }
 
-.CommentForm {
+.CommentBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 30vh;
   width: 40%;
+  margin: auto;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em;
+}
+
+.CommentForm {
+  width: auto;
   align-self: center;
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
+}
+
+.CommentExplain {
+  width: auto;
 }
 
 .CommentSection {
@@ -294,8 +308,18 @@ a {
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
+  overflow: auto;
+  margin-bottom: 3em;
 }
 
 .Comment {
-  
+  font-size: 16px;
+  height: 20em;
+  width: auto;
+  background-color: var(--color3);
+  padding: 1em;
+}
+
+.CommentDisplay {
+  display: inline-block;
 }
