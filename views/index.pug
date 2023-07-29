@@ -49,19 +49,19 @@ block layout-content
       div.CommentExplain
         p This comment section uses an Oracle Cloud database to store comments and load them.
     div.CommentSection(id="commentSection")
-      - for (var i = 0; i < data.length; i++)
-        div.Comment(name='newComment')
-          label(for='p')  Name: 
-          =data[i]['NAME']
-          .CommentDisplay(name='CommentDisplay')
-          br
-          label(for='CommentDisplay')  Email: 
-          =data[i]['EMAIL']
-          .CommentDisplay(name='CommentDisplay')
-          br
-          label(for='CommentDisplay') Response: 
-          =data[i]['TEXT']
-          .CommentDisplay(name='CommentDisplay')
+        - for (var i = 0; i < data.length; i++)
+          div.Comment(name='newComment')
+            label(for='p')  Name: 
+            =data[i]['NAME']
+            .CommentDisplay(name='CommentDisplay')
+            br
+            label(for='CommentDisplay')  Email: 
+            =data[i]['EMAIL']
+            .CommentDisplay(name='CommentDisplay')
+            br
+            label(for='CommentDisplay') Response: 
+            =data[i]['TEXT']
+            .CommentDisplay(name='CommentDisplay')
   div.Footer
     a.FooterItem About Me
     a.FooterItem Contact Info <br>

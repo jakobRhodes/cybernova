@@ -284,28 +284,36 @@ a {
   height: 30vh;
   width: 40%;
   margin: auto;
-  background-color: white;
+  background-color: #1e2421;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
 }
 
 .CommentForm {
   width: auto;
+  height: 100%;
   align-self: center;
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
+  border-right: 5px solid var(--color7);
 }
 
 .CommentExplain {
   width: auto;
+  height: 100%;
+  align-self: center;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em;
+  border-left: 5px solid var(--color7);
 }
 
 .CommentSection {
   height: 30vh;
   width: 40%;
   align-self: center;
-  background-color: white;
+  background-color: var(--color7);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
   overflow: auto;
@@ -316,8 +324,9 @@ a {
   font-size: 16px;
   height: 20em;
   width: auto;
-  background-color: var(--color3);
+  background-color: var(--color5);
   padding: 1em;
+  margin: 1em 0 2em 0;
 }
 
 .CommentDisplay {

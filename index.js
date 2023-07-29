@@ -12,6 +12,8 @@ const {body, validationResult } = require("express-validator");
 const bodyParser = require('body-parser');
 require("dotenv").config();
 const authRouter = require("./auth");
+const oracledb = require('oracledb');
+oracledb.autoCommit = true;
 
 /**
  * App Variables
@@ -20,7 +22,9 @@ const app = express();
 const port = process.env.PORT || "3000";
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+const connString = '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
+//Changes the return format to an array of JavaScript Objects
+oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 /**
  * Session Configuration (New!)
  */
@@ -103,26 +107,25 @@ const secured = (req, res, next) => {
 
 
 app.get('/', function (req, res) {
-  const oracledb = require('oracledb');
-  const connString = '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
   //Changes the return format to an array of JavaScript Objects
-  oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-
-  async function run() {
+  async function getCommentData() {
 
       const connection = await oracledb.getConnection ({
           user          : "MERCANIST",
           password      : 'CyberPunkLucy51!',
           connectString : connString
       });
-
+      //SQL COMMAND
       const result = await connection.execute(`SELECT * FROM COMMENTS`);
+      //Set data to contain only rows
       var data = result.rows;
       //console.log(data);
       await connection.close();
+      //Render Home Page with data as acessible variable
       res.render('index', {data: data});
     }
-  run();
+    //Run the async function
+    getCommentData();
 });
 
 app.get("/user", secured, (req, res, next) => {
@@ -142,9 +145,24 @@ app.post("/comment", [
   body('email').isEmail().normalizeEmail(),
   body('text').trim().escape()], 
 (req, res) => {
-  var newComment = true;
-  res.render('index', {name: req.body.name, email: req.body.email, text: req.body.text, newComment: newComment});
-  var mysql = require('mysql');
+  async function run() {
+      const connection = await oracledb.getConnection ({
+          user          : "MERCANIST",
+          password      : 'CyberPunkLucy51!',
+          connectString : connString
+      });
+      var commentorName = req.body.name;
+      var commentorEmail = req.body.email;
+      var commenterComment = req.body.text;
+      console.log('INSERT INTO COMMENTS' +
+      ' VALUES (' + '\'' + commentorName + '\'' + ', ' + '\'' + commentorEmail + '\'' + ', ' + '\'' + commenterComment + '\'' + ')');
+      const result = await connection.execute('INSERT INTO COMMENTS' +
+      ' VALUES (' + '\'' + commentorName + '\'' + ', ' + '\'' + commentorEmail + '\'' + ', ' + '\'' + commenterComment + '\'' + ')');
+      await connection.close();
+      let data 
+      res.redirect('/');
+    }
+  run();
 });
 
 /**
