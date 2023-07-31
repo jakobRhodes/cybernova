@@ -3,7 +3,6 @@
 //
 var user = 'MERCANIST';
 var password = 'CyberPunkLucy51!';
-var proxy = 'https://zb6dyffxhdrfk0:uoqw9rgymdabbdru3t0tvybbkgyx@us-east-shield-04.quotaguard.com:9294';
 const oracledb = require('oracledb');
 const connString = '(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -14,8 +13,6 @@ async function run() {
         user          : user,
         password      : password,
         connectString : connString,
-        httpsProxy    : proxy,
-        httpsProxyPort: 9294
     });
 
     const result = await connection.execute(`SELECT * FROM COMMENTS`);
