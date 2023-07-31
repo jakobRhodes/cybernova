@@ -15,6 +15,12 @@ const authRouter = require("./auth");
 const oracledb = require('oracledb');
 oracledb.autoCommit = true;
 
+
+/**
+ * Proxy required to acess database
+ */
+
+
 /**
  * App Variables
  */
