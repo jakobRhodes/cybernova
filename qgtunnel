@@ -1,0 +1,6 @@
+
+[qgtunnel.cybernova_Tunnel]
+accept = "127.0.0.1:1521"
+connect = "adb.us-chicago-1.oraclecloud.com:1521"
+encrypted = false
+transparent = true
