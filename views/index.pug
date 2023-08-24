@@ -36,37 +36,38 @@ block layout-content
     div.CommentBox
       div.CommentForm
         h2 Leave a Comment!
-        form(role='form' method='POST' action='/comment')
+        form(role='form' method='POST' action='/comment' id="commentForm")
           label(for='name') Name:
-          input#name.form-control(type='text', placeholder='name' name='name')
+          input#name.form-control(type='text', placeholder='' name='name')
           <br>
           label(for='email') Email: 
-          input#email.form-control(type='email', placeholder='name@email.com' name='email')
+          input#email.form-control(type='email', placeholder='' name='email')
           <br><br>
-          textarea#commentText(name='text' rows='2' cols='30')
+          textarea#commentText(name='text' rows='2' cols='35' maxlength="140" form="commentForm" placeholder="Type comment here...")
           <br><br>
           input(type='submit' value='Submit')
       div.CommentExplain
-        p This comment section uses an Oracle Cloud database to store comments and load them.
+        h2 How it works!
+        p This comment section works by connecting through a tunnel via QuotaGuard to an automatic database hosted on Oracle Cloud. It connects using node oracleDB and uses SQL to retireve and insert comments into the database.
+        div.CommentExplainLinkBox
+          div.CommentExplainLink
+            a(href='https://www.quotaguard.com/') QuotaGuard
+          div.CommentExplainLink  
+            a(href='https://cloud.oracle.com/') Oracle Cloud
     div.CommentSection(id="commentSection")
         - for (var i = 0; i < data.length; i++)
           div.Comment(name='newComment')
-            label(for='p')  Name: 
-            =data[i]['NAME']
             .CommentDisplay(name='CommentDisplay')
-            br
-            label(for='CommentDisplay')  Email: 
-            =data[i]['EMAIL']
+              =data[i]['NAME']
             .CommentDisplay(name='CommentDisplay')
-            br
-            label(for='CommentDisplay') Response: 
-            =data[i]['TEXT']
-            .CommentDisplay(name='CommentDisplay')
+              =data[i]['EMAIL']
+            .CommentDisplayText(name='CommentDisplayText')
+              =data[i]['TEXT']
   div.Footer
     a.FooterItem About Me
     a.FooterItem Contact Info <br>
     a.FooterItem Support Me <br>
-    a.FooterItem My Youtube <br>
+    a.FooterItem My Github <br>
     div.FooterBanner 
       div.FooterBannerItem Privacy Policy
       div.FooterBannerItem |

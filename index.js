@@ -1,3 +1,4 @@
+// File Name
 // index.js
 
 /**
@@ -13,24 +14,24 @@ const bodyParser = require('body-parser');
 require("dotenv").config();
 const authRouter = require("./auth");
 const oracledb = require('oracledb');
-oracledb.autoCommit = true;
-
-
-/**
- * Proxy required to acess database
- */
-
 
 /**
  * App Variables
  */
 const app = express();
 const port = process.env.PORT || "3000";
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-const connString = '(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
+const connString = '(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-chicago-1.oraclecloud.com))(connect_data=(service_name=gc9da1e68817696_cybernovadatabase_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
 //Changes the return format to an array of JavaScript Objects
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
+// Commits
+oracledb.autoCommit = true;
+//Required to read body variables
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//Development Variables
+let commentSectionEnabled = true;
+
 /**
  * Session Configuration (New!)
  */
@@ -131,7 +132,8 @@ app.get('/', function (req, res) {
       res.render('index', {data: data});
     }
     //Run the async function
-    getCommentData();
+    if (commentSectionEnabled)
+      getCommentData();
 });
 
 app.get("/user", secured, (req, res, next) => {
@@ -151,7 +153,7 @@ app.post("/comment", [
   body('email').isEmail().normalizeEmail(),
   body('text').trim().escape()], 
 (req, res) => {
-  async function run() {
+  async function insertComment() {
       const connection = await oracledb.getConnection ({
           user          : "MERCANIST",
           password      : 'CyberPunkLucy51!',
@@ -168,7 +170,8 @@ app.post("/comment", [
       let data 
       res.redirect('/');
     }
-  run();
+    if (commentSectionEnabled)
+      insertComment();
 });
 
 /**
