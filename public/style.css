@@ -356,6 +356,7 @@ label {
   height: auto;
   width: auto;
   max-height: 1100px;
+  min-height: 1100px;
   align-self: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
