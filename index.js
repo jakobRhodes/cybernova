@@ -159,8 +159,8 @@ app.post("/comment", [
           password      : 'CyberPunkLucy51!',
           connectString : connString
       });
-      var commentorName = req.body.name;
-      var commentorEmail = req.body.email;
+      var commentorName    = req.body.name;
+      var commentorEmail   = req.body.email;
       var commenterComment = req.body.text;
       console.log('INSERT INTO COMMENTS' +
       ' VALUES (' + '\'' + commentorName + '\'' + ', ' + '\'' + commentorEmail + '\'' + ', ' + '\'' + commenterComment + '\'' + ')');
