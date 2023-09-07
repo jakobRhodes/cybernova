@@ -34,6 +34,7 @@ block layout-content
         p Moreover, my journey with Node.js exposed me to the concept of middleware. Middleware acted as a powerful tool for handling common tasks such as authentication, logging, and error handling. I learned how to leverage existing middleware packages and even create custom middleware tailored to the specific needs of my projects. This not only enhanced the functionality of my websites but also made my code more modular and maintainable.
         p In summary, my experience of creating websites using Node.js has been transformative. From mastering JavaScript fundamentals and exploring core modules to embracing asynchronous programming and harnessing the vast npm ecosystem, this journey has equipped me with a diverse set of skills. I now possess the knowledge and expertise to create high-performance, scalable, and feature-rich web applications that leverage the power of Node.js.
     div.Widgets
+      div.CommentHeader
       div.CommentBox
         div.CommentForm
           h2 Leave a Comment!
@@ -70,9 +71,9 @@ block layout-content
                 =data[i]['TEXT']
             <br>
   div.Footer
-    a.FooterItem About Me
-    a.FooterItem Contact Info <br>
-    a.FooterItem Support Me <br>
+    a(href='/about').FooterItem About Me
+    a(href='/contact').FooterItem Contact Info <br>
+    a(href='/support').FooterItem Support Me <br>
     a(href='https://github.com/jakobRhodes').FooterItem My Github <br>
     div.FooterBanner 
       div.FooterBannerItem Privacy Policy

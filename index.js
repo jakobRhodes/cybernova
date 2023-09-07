@@ -174,6 +174,19 @@ app.post("/comment", [
       insertComment();
 });
 
+app.get("/about", (req, res) => {
+  res.render('template');
+});
+
+app.get("/contact", (req, res) => {
+  res.render('template');
+});
+
+app.get("/support", (req, res) => {
+  res.render('template');
+});
+
+
 /**
  * Server Activation
  */
