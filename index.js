@@ -174,6 +174,10 @@ app.post("/comment", [
       insertComment();
 });
 
+app.get("/wip", (req, res) => {
+  res.render('template');
+});
+
 app.get("/about", (req, res) => {
   res.render('template');
 });
