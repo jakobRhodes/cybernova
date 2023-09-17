@@ -30,7 +30,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Development Variables
-let commentSectionEnabled = true;
+let commentSectionEnabled = false;
+let numberOfRequests = 0;
+let d = new Date();
 
 /**
  * Session Configuration (New!)
@@ -132,8 +134,16 @@ app.get('/', function (req, res) {
       res.render('index', {data: data});
     }
     //Run the async function
-    if (commentSectionEnabled)
+    //Reset request counter on the first day of the month
+    if (d.getDate() == 1)
+      numberOfRequests = 0;
+    if (commentSectionEnabled && numberOfRequests < 250) {
       getCommentData();
+      numberOfRequests++;
+      console.log(numberOfRequests);
+    }
+    else 
+      res.render('index', {commentSectionEnabled: commentSectionEnabled});
 });
 
 app.get("/user", secured, (req, res, next) => {

@@ -361,8 +361,8 @@ label {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
   overflow: auto;
-  background-color: var(--color7);
-  border: 5px solid var(--color6);
+  background-color: var(--color10);
+  border: 5px solid var(--color5);
 }
 
 .Comment {
@@ -419,6 +419,7 @@ label {
   background-color: var(--color1);
   margin: 5em;
   column-gap: 2em;
+  margin-top: 0em;
 }
 
 .MidImage {
@@ -444,4 +445,23 @@ label {
 
 .CommentorEmail {
   margin-left: 2em;
+}
+
+.CommentHeader {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding-top: 15px;
+  margin: auto;
+  background-color: var(--color10);
+  font-size: 6em;
+  font-family: Cyber;
+  border: 5px solid var(--color5);
+  color: var(--color6);
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+filter: drop-shadow(30px 10px 4px var(--color1));
 }
