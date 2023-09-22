@@ -246,7 +246,7 @@ label {
   align-items: center;
   position: bottom;
   column-gap: 10em;
-  height: 6em;
+  height: 100px;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -314,8 +314,9 @@ label {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1em;
   background-color: var(--color7);
-  border: 5px solid var(--color6);
-  margin-bottom: 1em;
+  border: 5px solid var(--color5);
+  border-bottom: none;
+  margin-bottom: none;
 }
 
 .CommentForm {
@@ -456,7 +457,7 @@ label {
   background-color: var(--color10);
   font-size: 6em;
   font-family: Cyber;
-  border: 5px solid var(--color5);
+  border: 5px solid var(--color8);
   color: var(--color6);
   text-shadow:
   -1px -1px 0 #000,
@@ -464,4 +465,12 @@ label {
   -1px 1px 0 #000,
   1px 1px 0 #000;
 filter: drop-shadow(30px 10px 4px var(--color1));
+}
+
+.ContactInfo {
+  display: none;
+  visibility: hidden;
+  height: 100vh;
+  margin: 10em;
+  background-color: white;
 }

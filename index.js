@@ -31,8 +31,9 @@ app.use(bodyParser.json());
 
 //Development Variables
 let commentSectionEnabled = false;
-let numberOfRequests = 0;
-let d = new Date();
+let databaseRequests = 0;
+let date = new Date();
+let maximumRequests = 250;
 
 /**
  * Session Configuration (New!)
@@ -124,10 +125,12 @@ app.get('/', function (req, res) {
           password      : 'CyberPunkLucy51!',
           connectString : connString
       });
-      //SQL COMMAND
-      const result = await connection.execute(`SELECT * FROM COMMENTS`);
+      //SQL COMMANDS
+      const retreive = await connection.execute(`SELECT * FROM COMMENTS`);
+      await connection.execute('UPDATE DATABASE' + 
+      'SET REQUESTS = REQUESTS + 1;');
       //Set data to contain only rows
-      var data = result.rows;
+      var data = retreive.rows;
       //console.log(data);
       await connection.close();
       //Render Home Page with data as acessible variable
@@ -135,12 +138,13 @@ app.get('/', function (req, res) {
     }
     //Run the async function
     //Reset request counter on the first day of the month
-    if (d.getDate() == 1)
-      numberOfRequests = 0;
-    if (commentSectionEnabled && numberOfRequests < 250) {
+    if (date.getDate() == 1) {
+      databaseRequests = 0;
+    }
+    //Check that comment section is enabled and able to be used
+    if (commentSectionEnabled) {
+      //Async Function
       getCommentData();
-      numberOfRequests++;
-      console.log(numberOfRequests);
     }
     else 
       res.render('index', {commentSectionEnabled: commentSectionEnabled});
