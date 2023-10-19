@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Development Variables
-let commentSectionEnabled = false;
+let commentSectionEnabled = true;
 let databaseRequests = 0;
 let date = new Date();
 let maximumRequests = 250;
@@ -127,8 +127,7 @@ app.get('/', function (req, res) {
       });
       //SQL COMMANDS
       const retreive = await connection.execute(`SELECT * FROM COMMENTS`);
-      await connection.execute('UPDATE DATABASE' + 
-      'SET REQUESTS = REQUESTS + 1;');
+      await connection.execute('UPDATE DATABASE' + 'SET REQUESTS = REQUESTS + 1');
       //Set data to contain only rows
       var data = retreive.rows;
       //console.log(data);
@@ -150,6 +149,7 @@ app.get('/', function (req, res) {
       res.render('index', {commentSectionEnabled: commentSectionEnabled});
 });
 
+//Login
 app.get("/user", secured, (req, res, next) => {
   const { _raw, _json, ...userProfile } = req.user;
   res.render("user", {
@@ -158,10 +158,12 @@ app.get("/user", secured, (req, res, next) => {
   });
 });
 
+//Form GET
 app.get("/comment", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+//Form POST
 app.post("/comment", [
   body('name').isLength({ min: 3 }).trim().escape(),
   body('email').isEmail().normalizeEmail(),

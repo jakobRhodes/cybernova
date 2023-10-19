@@ -53,6 +53,8 @@ body,
 }
 
 body {
+  display: flexbox;
+  justify-content: center;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -473,4 +475,28 @@ filter: drop-shadow(30px 10px 4px var(--color1));
   height: 100vh;
   margin: 10em;
   background-color: white;
+}
+
+.LArrow {
+  margin: auto;
+  background-color: none;
+  background-image: url('./images/right-arrow.png');
+  background-size: cover;
+  min-width: 50px;
+  min-height: 50px;
+  transform: scaleX(-1);
+  margin-top: 1em;
+  margin-right: 5%;
+}
+
+.RArrow {
+  margin: auto;
+  background-color: none;
+  background-image: url('./images/right-arrow.png');
+  background-size: cover;
+  min-width: 50px;
+  min-height: 50px; 
+  transform: scaleX(1);
+  margin-top: 1em;
+  margin-left: 5%;
 }

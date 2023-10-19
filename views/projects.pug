@@ -1,0 +1,39 @@
+extends layout
+block layout-content
+  div.View.WelcomeView
+    h1.Banner 
+      div.Logo CYBERNOVA
+      div.Login
+        if isAuthenticated
+          a(href="/user")
+            div.LoginButton Just dive in!
+        else
+          a(href="/login")
+            div.LoginButton Login
+    h1.NavBar
+      a(href="/") 
+        div.NavBarButton Home
+      a(href="/Projects") 
+        div.NavBarButton Projects 
+      a(href="/Mods") 
+        div.NavBarButton Mods
+      a(href="/DnD") 
+        div.NavBarButton Homebrew
+      a(href="/DnD") 
+        div.NavBarButton Images
+      a(href="/Creator") 
+        div.NavBarButton Creator
+    div.Body
+      
+  div.Footer
+    a.FooterItem About Me
+    a.FooterItem Contact Info <br>
+    a.FooterItem Support Me <br>
+    a(href='https://github.com/jakobRhodes').FooterItem My Github <br>
+    div.FooterBanner 
+      div.FooterBannerItem Privacy Policy
+      div.FooterBannerItem |
+      div.FooterBannerItem Terms of Service
+      div.FooterBannerItem |
+      div.FooterBannerItem Follow Me
+      div.FooterBannerCopyright @ 2023 CYBERNOVA.COM ALL RIGHTS RESERVED
