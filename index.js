@@ -127,7 +127,7 @@ app.get('/', function (req, res) {
       });
       //SQL COMMANDS
       const retreive = await connection.execute(`SELECT * FROM COMMENTS`);
-      await connection.execute('UPDATE DATABASE' + 'SET REQUESTS = REQUESTS + 1');
+      await connection.execute('UPDATE DATABASE' + ' SET REQUESTS = REQUESTS + 1');
       //Set data to contain only rows
       var data = retreive.rows;
       //console.log(data);
