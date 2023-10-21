@@ -122,12 +122,13 @@ app.get('/', function (req, res) {
 
       const connection = await oracledb.getConnection ({
           user          : "MERCANIST",
-          password      : 'CyberPunkLucy51!',
+          password      : 'GoldenWind51!',
           connectString : connString
       });
       //SQL COMMANDS
       const retreive = await connection.execute(`SELECT * FROM COMMENTS`);
-      await connection.execute('UPDATE DATABASE' + ' SET REQUESTS = REQUESTS + 1');
+      // Log requests
+      // await connection.execute('UPDATE DATABASE' + ' SET REQUESTS = REQUESTS + 1');
       //Set data to contain only rows
       var data = retreive.rows;
       //console.log(data);
