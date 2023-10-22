@@ -131,10 +131,10 @@ app.get('/', function (req, res) {
       // await connection.execute('UPDATE DATABASE' + ' SET REQUESTS = REQUESTS + 1');
       //Set data to contain only rows
       var data = retreive.rows;
-      //console.log(data);
+      console.log(data);
       await connection.close();
       //Render Home Page with data as acessible variable
-      res.render('index', {data: data});
+      res.render('index', {data: data, commentSectionEnabled: commentSectionEnabled});
     }
     //Run the async function
     //Reset request counter on the first day of the month
@@ -142,7 +142,7 @@ app.get('/', function (req, res) {
       databaseRequests = 0;
     }
     //Check that comment section is enabled and able to be used
-    if (commentSectionEnabled) {
+   if (commentSectionEnabled) {
       //Async Function
       getCommentData();
     }
