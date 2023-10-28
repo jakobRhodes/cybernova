@@ -25,8 +25,8 @@ block layout-content
       a(href="/wip") 
         div.NavBarButton Creator
     div.Body
-      div.Title What I learned from creating this website!
-      div.Post(id="remove")
+      div.Title(id="title") What I learned from creating this website!
+      div.Post(id="post")
         div.PostContent
         p Creating a website using Node.js has been an incredible learning experience for me. Throughout this journey, I've gained a plethora of knowledge and skills that have transformed my understanding of web development. First and foremost, I delved deep into the world of JavaScript. Node.js, being built on the JavaScript runtime, required me to have a strong grasp of the language. I honed my skills in variables, data types, functions, control flow, and object-oriented programming. This solid foundation allowed me to write efficient server-side code, handle incoming requests, and manipulate data seamlessly.
         p One of the most enlightening aspects of working with Node.js was exploring its extensive collection of core modules. I became intimately familiar with modules like http and https, which enabled me to create robust web servers. The fs module opened up a world of possibilities for interacting with the file system, while the path module made working with file paths a breeze. Additionally, the util module proved to be invaluable for various utility functions and enhanced code readability.
@@ -34,8 +34,10 @@ block layout-content
         p Another crucial aspect of developing websites with Node.js was learning about package management and utilizing the npm (Node Package Manager) ecosystem. I discovered an incredible range of open-source libraries and frameworks that accelerated my development process. Whether it was Express.js for building web applications, Socket.io for real-time communication, or Passport.js for authentication, npm provided an extensive array of reliable and well-maintained packages that significantly boosted my productivity.
         p Moreover, my journey with Node.js exposed me to the concept of middleware. Middleware acted as a powerful tool for handling common tasks such as authentication, logging, and error handling. I learned how to leverage existing middleware packages and even create custom middleware tailored to the specific needs of my projects. This not only enhanced the functionality of my websites but also made my code more modular and maintainable.
         p In summary, my experience of creating websites using Node.js has been transformative. From mastering JavaScript fundamentals and exploring core modules to embracing asynchronous programming and harnessing the vast npm ecosystem, this journey has equipped me with a diverse set of skills. I now possess the knowledge and expertise to create high-performance, scalable, and feature-rich web applications that leverage the power of Node.js.
-      a.LArrow
-      a.RArrow
+      - var post = 0;
+      if (post != 0)
+        a.LArrow(onclick='nextPost()')
+      a.RArrow(onclick='nextPost()')
     div.CommentHeader Comment Section
     div.Widgets
       div.CommentBox

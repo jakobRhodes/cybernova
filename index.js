@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Development Variables
-let commentSectionEnabled = true;
+let commentSectionEnabled = false;
 let databaseRequests = 0;
 let date = new Date();
 let maximumRequests = 250;
